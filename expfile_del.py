@@ -1,5 +1,9 @@
 #!/usr/bin/env python3.5
-#coding=UTF-8
+#
+# Program: Auto delete slack cloud file.
+# Author: shazi
+# coding=UTF-8
+
 
 import requests
 import time
@@ -10,6 +14,7 @@ token = 'xoxp-9212542417-9212304530-50314118053-38e86be512'
 
 
 ts_to = int(time.time()) - expired * 24 * 60 * 60
+print(ts_to)
 
 def files_list():
 	params = {
@@ -19,6 +24,7 @@ def files_list():
 		}
 	uri = 'https://slack.com/api/files.list'
 	response = requests.get(uri, params=params)
+	print(response)
 	return json.loads(response.text)['files']
 
 def files_del(ids):
